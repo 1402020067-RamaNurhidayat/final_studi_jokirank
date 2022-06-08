@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/form_data', function (Request $request) {
+    return response([
+        'payment_method' => \App\Models\PaymentMethod::all(),
+        'login_method' => \App\Models\LoginMethod::all(),
+        'jenis_rank' => \App\Models\JenisRank::all(),
+        'jenis_joki' => \App\Models\JenisJoki::all(),
+    ]);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

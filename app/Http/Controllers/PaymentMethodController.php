@@ -17,20 +17,20 @@ class PaymentMethodController extends Controller
         return PaymentMethod::all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:payment_method'
-        ]);
-        return PaymentMethod::create($request->all());
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'slug' => 'required|string|max:255|unique:payment_method'
+    //     ]);
+    //     return PaymentMethod::create($request->all());
+    // }
 
     /**
      * Display the specified resource.
@@ -43,32 +43,32 @@ class PaymentMethodController extends Controller
         return PaymentMethod::findOrFail($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:payment_method,slug,' . $id
-        ]);
-        $paymentMethod = PaymentMethod::findOrFail($id);
-        $paymentMethod->update($request->all());
-        return $paymentMethod;
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'slug' => 'required|string|max:255|unique:payment_method,slug,' . $id
+    //     ]);
+    //     $paymentMethod = PaymentMethod::findOrFail($id);
+    //     $paymentMethod->update($request->all());
+    //     return $paymentMethod;
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        return PaymentMethod::destroy($id);
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy($id)
+    // {
+    //     return PaymentMethod::destroy($id);
+    // }
 }

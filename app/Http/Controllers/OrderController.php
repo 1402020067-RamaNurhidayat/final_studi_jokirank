@@ -14,7 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return Order::all();
+        // Return all order where user_id = current user id
+        return Order::where('user_id', auth()->user()->id)->get();
     }
 
     /**
@@ -36,7 +37,18 @@ class OrderController extends Controller
             'request_hero' => 'required|string|max:255',
             'phone' => 'required|string|max:25'
         ]);
-        return Order::create($request->all());
+        return Order::create([
+            'name' => $request->name,
+            'jenis_rank_id' => $request->jenis_rank_id,
+            'jenis_joki_id' => $request->jenis_joki_id,
+            'payment_method_id' => $request->payment_method_id,
+            'login_method_id' => $request->login_method_id,
+            'email' => $request->email,
+            'password' => $request->password,
+            'request_hero' => $request->request_hero,
+            'phone' => $request->phone,
+            'user_id' => auth()->user()->id
+        ]);
     }
 
     /**
@@ -60,6 +72,13 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $order = Order::findOrFail($id);
+
+        // Check if user is authorized to update this order
+        if ($order->user_id !== auth()->user()->id) {
+            return response()->json([
+                'message' => 'Unauthorized'
+            ], 401);
+        }
 
         if ($order->status == Order::PENDING) {
             $fields = $request->validate([
@@ -107,6 +126,12 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $order = Order::findOrFail($id);
+        // Check if user is authorized to delete this order
+        if ($order->user_id !== auth()->user()->id) {
+            return response()->json([
+                'message' => 'Unauthorized'
+            ], 401);
+        }
         if ($order->status == Order::PENDING) {
             // Make order as cancelled
             $order->status = Order::CANCELLED;
