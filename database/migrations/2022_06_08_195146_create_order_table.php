@@ -23,7 +23,7 @@ class CreateOrderTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('request_hero');
-            $table->string('phone');
+            $table->string('phone', 25);
             $table->string('status')->default('PENDING');
             $table->timestamps();
         });
