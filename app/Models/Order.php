@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    // Constant PENDING
+    const PENDING = 'PENDING';
+    // Constant PAID
+    const PAID = 'PAID';
+    // Constant ONGOING
+    const ONGOING = 'ONGOING';
+    // Constant COMPLETED
+    const COMPLETED = 'COMPLETED';
+    // Constant CANCELLED
+    const CANCELLED = 'CANCELLED';
 
     // Table name is 'order'
     protected $table = 'order';
