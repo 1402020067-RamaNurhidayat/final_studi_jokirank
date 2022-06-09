@@ -19,6 +19,7 @@ class CreateOrderHistoryTable extends Migration
             $table->string('jenis_joki');
             $table->string('jenis_rank');
             $table->string('payment_method');
+            $table->decimal('total_price', 8, 2);
             $table->string('request_hero');
             $table->string('status')->default('CANCELLED');
             $table->timestamps();

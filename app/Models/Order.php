@@ -43,6 +43,7 @@ class Order extends Model
         'email',
         'password',
         'request_hero',
+        'total_price',
         'phone',
         'status'
     ];
@@ -87,6 +88,7 @@ class Order extends Model
             'jenis_joki' => $this->jenisJoki->name,
             'jenis_rank' => $this->jenisRank->name,
             'payment_method' => $this->paymentMethod->name,
+            'total_price' => $this->total_price,
             'request_hero' => $this->request_hero,
             'status' => $status,
         ]);

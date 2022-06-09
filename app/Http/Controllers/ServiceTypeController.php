@@ -47,6 +47,8 @@ class ServiceTypeController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'description' => 'string|max:255',
+            'price' => 'numeric',
         ]);
 
         $jenis = JenisJoki::create($request->all());
@@ -59,6 +61,7 @@ class ServiceTypeController extends Controller
         $field = $request->validate([
             'name' => 'string|max:255',
             'description' => 'string|max:255',
+            'price' => 'numeric',
         ]);
         $jenis->update($field);
 

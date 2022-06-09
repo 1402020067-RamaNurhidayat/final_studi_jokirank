@@ -39,6 +39,8 @@ class ServiceRankController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
+            'description' => 'string|max:255',
+            'price' => 'numeric',
         ]);
 
         $rank = JenisRank::create($request->all());
@@ -50,7 +52,8 @@ class ServiceRankController extends Controller
     {
         $field = $request->validate([
             'name' => 'string|max:255',
-            'description' => 'string|max:255',
+            'description' => 'max:255',
+            'price' => 'numeric',
         ]);
         $rank->update($field);
 

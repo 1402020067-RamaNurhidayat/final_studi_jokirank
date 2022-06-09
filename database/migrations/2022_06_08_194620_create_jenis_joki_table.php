@@ -16,6 +16,8 @@ class CreateJenisJokiTable extends Migration
         Schema::create('jenis_joki', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description')->nullable();
+            $table->decimal('price', 8, 2)->default(0);
             $table->timestamps();
         });
     }

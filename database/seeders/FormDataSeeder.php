@@ -17,17 +17,23 @@ class FormDataSeeder extends Seeder
      */
     public function run()
     {
-        JenisJoki::insert([
-            [ 'name' => 'Joki Classic'],
-            [ 'name' => 'Joki Ranked' ],
+        JenisJoki::insert([ [
+                'name' => 'Joki Classic',
+                'description' => 'Kami akan menjoki akun anda di mode Classic sampai rank yang anda pilih',
+                'price' => '50000',
+            ], [
+                'name' => 'Joki Ranked',
+                'description' => 'Kami akan menjoki akun anda di mode Ranked sampai rank yang anda pilih',
+                'price' => '100000',
+            ],
         ]);
         JenisRank::insert([
-            [ 'name' => 'Warrior / Star'],
-            [ 'name' => 'Elite / Star'],
-            [ 'name' => 'Master / Star'],
-            [ 'name' => 'Grandmaster / Star'],
-            [ 'name' => 'Epic / Star'],
-            [ 'name' => 'Legend / Star'],
+            [ 'name' => 'Warrior / Star', 'price' => 50000],
+            [ 'name' => 'Elite / Star', 'price' => 50000],
+            [ 'name' => 'Master / Star', 'price' => 50000],
+            [ 'name' => 'Grandmaster / Star', 'price' => 50000],
+            [ 'name' => 'Epic / Star', 'price' => 50000],
+            [ 'name' => 'Legend / Star', 'price' => 50000],
         ]);
         LoginMethod::insert([
             [ 'name' => 'Facebook', 'slug' => 'facebook',   'icon' => '' ],

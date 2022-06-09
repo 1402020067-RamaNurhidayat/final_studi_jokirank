@@ -17,6 +17,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nama</th>
+                        <th>Harga</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -25,6 +26,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
+                        <td>{{ $item->price }}</td>
                         <td>
                             <a href="{{ route('service.'.$type.'.edit', $item->id) }}" class="text-blue-500">
                                 <i class="fas fa-edit"></i> Edit

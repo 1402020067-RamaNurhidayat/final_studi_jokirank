@@ -24,6 +24,7 @@ class CreateOrderTable extends Migration
             $table->string('password');
             $table->string('request_hero');
             $table->string('phone', 25);
+            $table->decimal('total_price', 8, 2)->default(0);
             $table->string('status')->default('PENDING');
             $table->timestamps();
         });

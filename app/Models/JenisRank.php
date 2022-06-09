@@ -14,7 +14,9 @@ class JenisRank extends Model
 
     // Fillable column names
     protected $fillable = [
-        'name'
+        'name',
+        'description',
+        'price',
     ];
 
     // Has many relationship with Order

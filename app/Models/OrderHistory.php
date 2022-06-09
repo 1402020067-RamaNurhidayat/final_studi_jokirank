@@ -17,6 +17,7 @@ class OrderHistory extends Model
         'jenis_joki',
         'jenis_rank',
         'payment_method',
+        'total_price',
         'request_hero',
         'status',
     ];

@@ -22,6 +22,26 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="sm:col-span-6">
+                                <div class="sm:col-span-6">
+                                    <label for="description" class="block text-sm font-medium leading-5 text-gray-700">
+                                        {{ __('Deskripsi') }}
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <textarea id="description" name="description" rows="3" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" required>{{ old('description') }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm:col-span-6">
+                                <div class="sm:col-span-6">
+                                    <label for="price" class="block text-sm font-medium leading-5 text-gray-700">
+                                        {{ __('Harga') }}
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="price" type="number" name="price" value="{{ old('price') }}" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" required>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-8 border-t border-gray-200 pt-5">
                             <div class="flex justify-end">

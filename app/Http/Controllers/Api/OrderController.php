@@ -37,7 +37,7 @@ class OrderController extends Controller
             'request_hero' => 'required|string|max:255',
             'phone' => 'required|string|max:25'
         ]);
-        return Order::create([
+        $order = Order::create([
             'jenis_rank_id' => $request->jenis_rank_id,
             'jenis_joki_id' => $request->jenis_joki_id,
             'payment_method_id' => $request->payment_method_id,
@@ -48,6 +48,9 @@ class OrderController extends Controller
             'phone' => $request->phone,
             'user_id' => auth()->user()->id
         ]);
+        $order->total_price = $order->jenisRank->price + $order->jenisJoki->price;
+        $order->save();
+        return $order;
     }
 
     /**
@@ -92,6 +95,8 @@ class OrderController extends Controller
                 'phone' => 'string|max:25'
             ]);
             $order->update($fields);
+            $order->total_price = $order->jenisRank->price + $order->jenisJoki->price;
+            $order->save();
             return $order;
         } else if ($order->status == Order::PAID) {
             // If paid, only allow changing name, email, password, request_hero, phone

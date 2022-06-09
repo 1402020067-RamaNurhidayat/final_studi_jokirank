@@ -7,6 +7,15 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                {{-- Output error --}}
+                @if ($errors->any())
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Whoops!</strong>
+                    <span class="block sm:inline">
+                        {{ $errors->first() }}
+                    </span>
+                </div>
+                @endif
                 <div class="bg-white px-4 py-5 sm:p-6">
                     <form action="{{ route('service.'.$type.'.update', $item->id) }}" method="POST">
                         @csrf
@@ -19,6 +28,26 @@
                                     </label>
                                     <div class="mt-1 rounded-md shadow-sm">
                                         <input id="name" type="text" name="name" value="{{ $item->name }}" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm:col-span-6">
+                                <div class="sm:col-span-6">
+                                    <label for="description" class="block text-sm font-medium leading-5 text-gray-700">
+                                        {{ __('Deskripsi') }}
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <textarea id="description" name="description" rows="3" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">{{ $item->description }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sm:col-span-6">
+                                <div class="sm:col-span-6">
+                                    <label for="price" class="block text-sm font-medium leading-5 text-gray-700">
+                                        {{ __('Harga') }}
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="price" type="number" name="price" value="{{ $item->price }}" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" required>
                                     </div>
                                 </div>
                             </div>
