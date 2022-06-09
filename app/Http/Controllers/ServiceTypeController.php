@@ -34,6 +34,26 @@ class ServiceTypeController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('service.create')->with([
+            'type' => 'jenis',
+            'name' => 'Jenis',
+        ]);
+    }
+
+    // Store
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        $jenis = JenisJoki::create($request->all());
+
+        return redirect()->route('service.jenis.index');
+    }
+
     public function update(Request $request, JenisJoki $jenis)
     {
         $field = $request->validate([

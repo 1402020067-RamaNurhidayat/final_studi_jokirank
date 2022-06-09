@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisJoki;
 use App\Models\JenisRank;
 use App\Models\Order;
+use App\Models\OrderHistory;
 use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,7 @@ class OrderController extends Controller
     {
         return view('order.index')->with([
             // Get all orders which is not cancelled or completed
-            'orders' => Order::where('status', '!=', Order::CANCELLED)
-                ->where('status', '!=', Order::COMPLETED)
-                ->get(),
+            'orders' => Order::all(),
             'show_edit' => true,
         ]);
     }
@@ -48,14 +47,22 @@ class OrderController extends Controller
             'payment_method_id' => 'integer|exists:payment_method,id',
         ]);
         $order->update($field);
+        if ($order->status == Order::COMPLETED) {
+            $order->createHistory(Order::COMPLETED);
+            $order->delete();
+        } elseif ($order->status == Order::CANCELLED) {
+            $order->createHistory(Order::CANCELLED);
+            $order->delete();
+        }
 
-        return redirect()->route('order.show', $order);
+        return redirect()->route('order.index');
     }
 
     public function destroy(Order $order)
     {
+        // Make a backup of the order to order_history table
+        $order->createHistory(Order::CANCELLED);
         $order->delete();
-
         return redirect()->route('order.index');
     }
 
@@ -83,9 +90,7 @@ class OrderController extends Controller
     {
         return view('order.index')->with([
             // Get all orders which is cancelled or completed
-            'orders' => Order::where('status', '=', Order::CANCELLED)
-                ->orWhere('status', '=', Order::COMPLETED)
-                ->get(),
+            'orders' => OrderHistory::all(),
             'show_edit' => false,
         ]);
     }

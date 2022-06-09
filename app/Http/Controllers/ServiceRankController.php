@@ -16,14 +16,6 @@ class ServiceRankController extends Controller
         ]);
     }
 
-    public function show(JenisRank $rank)
-    {
-        return view('service.show')->with([
-            'type' => 'rank',
-            'item' => $rank,
-            'name' => 'Rank',
-        ]);
-    }
 
     public function edit(JenisRank $rank)
     {
@@ -32,6 +24,26 @@ class ServiceRankController extends Controller
             'item' => $rank,
             'name' => 'Rank',
         ]);
+    }
+
+    public function create()
+    {
+        return view('service.create')->with([
+            'type' => 'rank',
+            'name' => 'Rank',
+        ]);
+    }
+
+    // Store
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+
+        $rank = JenisRank::create($request->all());
+
+        return redirect()->route('service.rank.index');
     }
 
     public function update(Request $request, JenisRank $rank)

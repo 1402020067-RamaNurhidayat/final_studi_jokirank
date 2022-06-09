@@ -15,11 +15,11 @@ class CreateOrderTable extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('jenis_joki_id')->constrained('jenis_joki');
-            $table->foreignId('jenis_rank_id')->constrained('jenis_rank');
-            $table->foreignId('payment_method_id')->constrained('payment_method');
-            $table->foreignId('login_method_id')->constrained('login_method');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('jenis_joki_id')->constrained('jenis_joki')->onDelete('cascade');
+            $table->foreignId('jenis_rank_id')->constrained('jenis_rank')->onDelete('cascade');
+            $table->foreignId('payment_method_id')->constrained('payment_method')->onDelete('cascade');
+            $table->foreignId('login_method_id')->constrained('login_method')->onDelete('cascade');
             $table->string('email');
             $table->string('password');
             $table->string('request_hero');

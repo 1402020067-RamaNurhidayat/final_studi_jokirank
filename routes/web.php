@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderHistoryController;
 use App\Http\Controllers\ServiceRankController;
 use App\Http\Controllers\ServiceTypeController;
 use App\Http\Controllers\UserController;
@@ -24,7 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/users', UserController::class);
     Route::resource('/order', OrderController::class);
-    Route::get('/orders/done', [OrderController::class, 'done'])->name('order.done');
+    Route::resource('/order_history', OrderHistoryController::class);
 
     Route::group(['prefix' => 'service', 'as' => 'service.'], function () {
         Route::resource('/rank', ServiceRankController::class);

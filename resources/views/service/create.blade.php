@@ -1,16 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Jasa '.$name.' #'.$item->id) }}
+            {{ __('Buat Jasa ' . $name) }}
         </h2>
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="bg-white px-4 py-5 sm:p-6">
-                    <form action="{{ route('service.'.$type.'.update', $item->id) }}" method="POST">
+                    <form action="{{ route('service.'.$type.'.store') }}" method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('POST')
                         <div class="grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
                             <div class="sm:col-span-6">
                                 <div class="sm:col-span-6">
@@ -18,7 +18,7 @@
                                         {{ __('Nama') }}
                                     </label>
                                     <div class="mt-1 rounded-md shadow-sm">
-                                        <input id="name" type="text" name="name" value="{{ $item->name }}" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" required>
+                                        <input id="name" type="text" name="name" value="{{ old('name') }}" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" required>
                                     </div>
                                 </div>
                             </div>

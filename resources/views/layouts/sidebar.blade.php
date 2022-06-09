@@ -8,10 +8,10 @@
     {{ "Users" }}
   </a>
   <a href="{{ route('order.index') }}" class="{{ request()->routeIs('order.index') ? 'bg-gray-300' : '' }} text-black text-xl transition-all duration-500 hover:text-white hover:bg-black font-bold p-3 block">
-    {{ "Pending Order" }}
+    {{ "Orders" }}
   </a>
-  <a href="{{ route('order.done') }}" class="{{ request()->routeIs('order.done') ? 'bg-gray-300' : '' }} text-black text-xl transition-all duration-500 hover:text-white hover:bg-black font-bold p-3 block">
-    {{ "Finished Order" }}
+  <a href="{{ route('order_history.index') }}" class="{{ request()->routeIs('order.done') ? 'bg-gray-300' : '' }} text-black text-xl transition-all duration-500 hover:text-white hover:bg-black font-bold p-3 block">
+    {{ "Order History" }}
   </a>
   <a href="{{ route('service.rank.index') }}" class="{{ request()->routeIs('service.rank.index') ? 'bg-gray-300' : '' }} text-black text-xl transition-all duration-500 hover:text-white hover:bg-black font-bold p-3 block">
     {{ "Service: Rank" }}

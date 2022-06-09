@@ -48,4 +48,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    // User order relationship
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    // User order history relationship
+    public function orderHistory()
+    {
+        return $this->hasMany(OrderHistory::class);
+    }
 }

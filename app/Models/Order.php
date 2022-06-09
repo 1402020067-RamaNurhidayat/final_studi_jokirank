@@ -76,4 +76,19 @@ class Order extends Model
     {
         return $this->belongsTo(LoginMethod::class);
     }
+
+    public function createHistory($status)
+    {
+        $this->update([
+            'status' => $status,
+        ]);
+        return OrderHistory::create([
+            'user_id' => $this->user_id,
+            'jenis_joki' => $this->jenisJoki->name,
+            'jenis_rank' => $this->jenisRank->name,
+            'payment_method' => $this->paymentMethod->name,
+            'request_hero' => $this->request_hero,
+            'status' => $status,
+        ]);
+    }
 }
