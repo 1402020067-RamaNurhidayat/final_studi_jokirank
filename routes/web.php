@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ServiceRankController;
+use App\Http\Controllers\ServiceTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +23,13 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('dashboard');
 
     Route::resource('/users', UserController::class);
+    Route::resource('/order', OrderController::class);
+    Route::get('/orders/done', [OrderController::class, 'done'])->name('order.done');
+
+    Route::group(['prefix' => 'service', 'as' => 'service.'], function () {
+        Route::resource('/rank', ServiceRankController::class);
+        Route::resource('/jenis', ServiceTypeController::class);
+    });
 });
 
 require __DIR__.'/auth.php';

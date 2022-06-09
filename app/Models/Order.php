@@ -19,6 +19,17 @@ class Order extends Model
     // Constant CANCELLED
     const CANCELLED = 'CANCELLED';
 
+    public static function statuses()
+    {
+        return [
+            self::PENDING,
+            self::PAID,
+            self::ONGOING,
+            self::COMPLETED,
+            self::CANCELLED,
+        ];
+    }
+
     // Table name is 'order'
     protected $table = 'order';
 

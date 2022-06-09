@@ -28,7 +28,6 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
             'jenis_rank_id' => 'required|integer|exists:jenis_rank,id',
             'jenis_joki_id' => 'required|integer|exists:jenis_joki,id',
             'payment_method_id' => 'required|integer|exists:payment_method,id',
@@ -39,7 +38,6 @@ class OrderController extends Controller
             'phone' => 'required|string|max:25'
         ]);
         return Order::create([
-            'name' => $request->name,
             'jenis_rank_id' => $request->jenis_rank_id,
             'jenis_joki_id' => $request->jenis_joki_id,
             'payment_method_id' => $request->payment_method_id,
