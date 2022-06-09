@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -31,6 +33,14 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        // Make sure the user role is admin
+        if (Auth::user()->role_id !== Role::ADMIN) {
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'email' => 'User is not an Administrator!',
+            ]);
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
