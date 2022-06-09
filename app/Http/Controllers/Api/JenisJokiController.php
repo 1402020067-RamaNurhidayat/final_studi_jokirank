@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+use App\Http\Controllers\Controller;
 
-use App\Models\JenisRank;
+use App\Models\JenisJoki;
 use Illuminate\Http\Request;
 
-class JenisRankController extends Controller
+class JenisJokiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class JenisRankController extends Controller
      */
     public function index()
     {
-        return JenisRank::all();
+        return JenisJoki::all();
     }
 
     /**
@@ -28,7 +29,7 @@ class JenisRankController extends Controller
         $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        return JenisRank::create($request->all());
+        return JenisJoki::create($request->all());
     }
 
     /**
@@ -39,7 +40,7 @@ class JenisRankController extends Controller
      */
     public function show($id)
     {
-        return JenisRank::findOrFail($id);
+        return JenisJoki::findOrFail($id);
     }
 
     /**
@@ -54,9 +55,9 @@ class JenisRankController extends Controller
         $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        $jenisRank = JenisRank::findOrFail($id);
-        $jenisRank->update($request->all());
-        return $jenisRank;
+        $jenisJoki = JenisJoki::findOrFail($id);
+        $jenisJoki->update($request->all());
+        return $jenisJoki;
     }
 
     /**
@@ -67,6 +68,6 @@ class JenisRankController extends Controller
      */
     public function destroy($id)
     {
-        return JenisRank::destroy($id);
+        return JenisJoki::destroy($id);
     }
 }

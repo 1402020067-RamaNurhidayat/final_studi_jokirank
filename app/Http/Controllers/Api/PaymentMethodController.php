@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+use App\Http\Controllers\Controller;
 
-use App\Models\LoginMethod;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 
-class LoginMethodController extends Controller
+class PaymentMethodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class LoginMethodController extends Controller
      */
     public function index()
     {
-        return LoginMethod::all();
+        return PaymentMethod::all();
     }
 
     // /**
@@ -26,9 +27,10 @@ class LoginMethodController extends Controller
     // public function store(Request $request)
     // {
     //     $request->validate([
-    //         'name' => 'required|string|max:255'
+    //         'name' => 'required|string|max:255',
+    //         'slug' => 'required|string|max:255|unique:payment_method'
     //     ]);
-    //     return LoginMethod::create($request->all());
+    //     return PaymentMethod::create($request->all());
     // }
 
     /**
@@ -39,7 +41,7 @@ class LoginMethodController extends Controller
      */
     public function show($id)
     {
-        return LoginMethod::findOrFail($id);
+        return PaymentMethod::findOrFail($id);
     }
 
     // /**
@@ -52,11 +54,12 @@ class LoginMethodController extends Controller
     // public function update(Request $request, $id)
     // {
     //     $request->validate([
-    //         'name' => 'required|string|max:255'
+    //         'name' => 'required|string|max:255',
+    //         'slug' => 'required|string|max:255|unique:payment_method,slug,' . $id
     //     ]);
-    //     $loginMethod = LoginMethod::findOrFail($id);
-    //     $loginMethod->update($request->all());
-    //     return $loginMethod;
+    //     $paymentMethod = PaymentMethod::findOrFail($id);
+    //     $paymentMethod->update($request->all());
+    //     return $paymentMethod;
     // }
 
     // /**
@@ -67,8 +70,6 @@ class LoginMethodController extends Controller
     //  */
     // public function destroy($id)
     // {
-    //     $loginMethod = LoginMethod::findOrFail($id);
-    //     $loginMethod->delete();
-    //     return $loginMethod;
+    //     return PaymentMethod::destroy($id);
     // }
 }
