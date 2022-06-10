@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\OrderHistoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         return $request->user();
     });
     Route::resource('/order', OrderController::class);
+    Route::get('/order_history', [OrderHistoryController::class, 'index']);
 
     // Logout
     Route::post('/logout', [AuthController::class, 'logout']);
