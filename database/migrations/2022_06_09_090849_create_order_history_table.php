@@ -16,7 +16,7 @@ class CreateOrderHistoryTable extends Migration
         Schema::create('order_history', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('order_code');
+            $table->string('order_code')->unique();
             $table->string('jenis_joki');
             $table->string('jenis_rank');
             $table->string('payment_method');

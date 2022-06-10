@@ -55,6 +55,7 @@ class Order extends Model
         'jenisJoki',
         'paymentMethod',
         'loginMethod',
+        'orderReceipt',
     ];
 
     // Belongs to relationship with User
@@ -102,5 +103,11 @@ class Order extends Model
             'request_hero' => $this->request_hero,
             'status' => $status,
         ]);
+    }
+
+    // hasOneOptional relationship with OrderReceipt
+    public function orderReceipt()
+    {
+        return $this->hasOne(OrderReceipt::class, 'order_code', 'order_code');
     }
 }

@@ -20,7 +20,7 @@ class CreateOrderTable extends Migration
             $table->foreignId('jenis_rank_id')->constrained('jenis_rank')->onDelete('cascade');
             $table->foreignId('payment_method_id')->constrained('payment_method')->onDelete('cascade');
             $table->foreignId('login_method_id')->constrained('login_method')->onDelete('cascade');
-            $table->string('order_code');
+            $table->string('order_code')->unique();
             $table->string('email');
             $table->string('password');
             $table->string('request_hero');
