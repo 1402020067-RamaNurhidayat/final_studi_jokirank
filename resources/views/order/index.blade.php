@@ -28,7 +28,7 @@
                         <td>{{ $order->jenisJoki->name }}</td>
                         <td>{{ $order->jenisRank->name }}</td>
                         <td>{{ $order->paymentMethod->name }}</td>
-                        <td>{{ $order->total_bayar }}</td>
+                        <td>{{ $order->total_price }}</td>
                         <td>{{ $order->loginMethod->name }}</td>
                         <td>{{ $order->status }}</td>
                         <td>

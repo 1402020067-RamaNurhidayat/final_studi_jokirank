@@ -27,7 +27,7 @@
                         <td>{{ $order->jenis_joki }}</td>
                         <td>{{ $order->jenis_rank }}</td>
                         <td>{{ $order->payment_method }}</td>
-                        <td>{{ $order->total_bayar }}</td>
+                        <td>{{ $order->total_price }}</td>
                         <td>{{ $order->status }}</td>
                         <td>
                             {{-- Details --}}
