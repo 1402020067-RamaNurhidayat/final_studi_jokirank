@@ -40,12 +40,21 @@ class Order extends Model
         'jenis_joki_id',
         'payment_method_id',
         'login_method_id',
+        'order_code',
         'email',
         'password',
         'request_hero',
         'total_price',
         'phone',
         'status'
+    ];
+
+    // Load these fields
+    protected $with = [
+        'jenisRank',
+        'jenisJoki',
+        'paymentMethod',
+        'loginMethod',
     ];
 
     // Belongs to relationship with User
@@ -85,6 +94,7 @@ class Order extends Model
         ]);
         return OrderHistory::create([
             'user_id' => $this->user_id,
+            'order_code' => $this->order_code,
             'jenis_joki' => $this->jenisJoki->name,
             'jenis_rank' => $this->jenisRank->name,
             'payment_method' => $this->paymentMethod->name,

@@ -42,6 +42,7 @@ class OrderController extends Controller
             'jenis_joki_id' => $request->jenis_joki_id,
             'payment_method_id' => $request->payment_method_id,
             'login_method_id' => $request->login_method_id,
+            'order_code' => uniqid("ORDER-"),
             'email' => $request->email,
             'password' => $request->password,
             'request_hero' => $request->request_hero,
