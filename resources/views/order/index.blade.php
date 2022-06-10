@@ -23,7 +23,7 @@
                 <tbody>
                     @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $order->id }}</td>
+                        <td>{{ $order->order_code }}</td>
                         <td>{{ $order->user->name }}</td>
                         <td>{{ $order->jenisJoki->name }}</td>
                         <td>{{ $order->jenisRank->name }}</td>
